@@ -1,0 +1,40 @@
+#76MinimumWindowSubstring(20240909)1
+from collections import defaultdict
+class Solution(object):
+    def minWindow(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: str
+        """
+        lenT, lenS = len(t),len(s)
+        if lenT > lenS:
+            return ''
+        dictT = defaultdict(lambda: 0)
+        dictS = defaultdict(lambda: 0)
+        result = ''
+        lenCurrentResult = float('inf')
+        for char in t:
+            dictT[char] += 1
+        lenDictT = len(dictT)
+        formed = 0
+        head, tail = 0, 0
+        while tail < lenS:
+            char = s[tail]
+            dictS[char] += 1
+            if char in dictT and dictS[char] == dictT[char]:
+                formed += 1
+            while lenDictT == formed and head <= tail:
+                if tail + 1 - head < lenCurrentResult:
+                    result = s[head:tail+1]
+                    lenCurrentResult = tail + 1 - head
+                #pop out head
+                char = s[head]
+                dictS[char] -= 1
+                if char in dictT and dictS[char] < dictT[char]:
+                    formed -= 1
+                head += 1
+            tail += 1
+        return result
+                    
+        
