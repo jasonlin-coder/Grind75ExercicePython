@@ -1,0 +1,49 @@
+from collections import deque
+class LRUCache(object):
+
+    def __init__(self, capacity):
+        """
+        :type capacity: int
+        """
+        
+        self.keyDict = {}
+        self.useDeque = deque()
+        self.timeLabel = 0
+        self.capacity = capacity
+
+    def get(self, key):
+        """
+        :type key: int
+        :rtype: int
+        """
+        if key not in self.keyDict:
+            return -1
+        
+        self.keyDict[key][1] = self.timeLabel
+        
+        self.useDeque.append([key, self.timeLabel])
+        self.timeLabel += 1
+        return self.keyDict[key][0]
+
+    def put(self, key, value):
+        """
+        :type key: int
+        :type value: int
+        :rtype: None
+        """
+        if key not in self.keyDict and len(self.keyDict) == self.capacity:
+            leastUse = self.useDeque.popleft()
+            while self.keyDict[leastUse[0]][1] != leastUse[1]:
+                leastUse = self.useDeque.popleft()
+            del self.keyDict[leastUse[0]]
+        self.keyDict[key] = [value, self.timeLabel]
+        self.useDeque.append([key, self.timeLabel])
+        self.timeLabel += 1
+        
+            
+
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
