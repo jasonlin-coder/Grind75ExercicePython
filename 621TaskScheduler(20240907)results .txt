@@ -1,0 +1,15 @@
+621TaskScheduler(20240907)results 
+first Try
+on leetcode:
+
+Runtime
+320
+ms
+Beats
+70.49%
+Analyze Complexity
+Memory
+13.78
+MB
+Beats
+72.59%

@@ -1,0 +1,15 @@
+146LRUCache(20240907)results 
+first Try
+on leetcode:
+
+Runtime
+715
+ms
+Beats
+79.00%
+Analyze Complexity
+Memory
+80.71
+MB
+Beats
+9.90%

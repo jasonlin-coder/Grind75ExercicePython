@@ -1,0 +1,15 @@
+230KthSmallestElementinaBST(20240907)
+first try
+on leetcode
+
+Runtime
+29
+ms
+Beats
+75.28%
+Analyze Complexity
+Memory
+19.45
+MB
+Beats
+25.65%

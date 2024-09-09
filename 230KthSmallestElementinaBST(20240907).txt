@@ -1,0 +1,33 @@
+#230KthSmallestElementinaBST(20240907)
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def kthSmallest(self, root, k):
+        """
+        :type root: TreeNode
+        :type k: int
+        :rtype: int
+        """
+        #for a node, follow the order: node.left node node.right
+        seen = set()
+        checkList = [root]
+        while k > 0:
+            aNode = checkList.pop()
+            if aNode.right:
+                checkList.append(aNode.right)
+            checkList.append(aNode)
+            seen.add(aNode)
+            if aNode.left:
+                checkList.append(aNode.left)
+            else:#aNode checkList[-1] is the smallest
+                
+                
+                
+                while k > 0 and checkList[-1] in seen:
+                    k -= 1
+                    result = checkList.pop()
+        return result.val
