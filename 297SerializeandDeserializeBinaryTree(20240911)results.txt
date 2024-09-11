@@ -1,0 +1,14 @@
+#297SerializeandDeserializeBinaryTree(20240911)results
+on leetcode:
+
+Runtime
+89
+ms
+Beats
+42.88%
+Analyze Complexity
+Memory
+21.66
+MB
+Beats
+76.50%
