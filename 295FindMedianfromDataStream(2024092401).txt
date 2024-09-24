@@ -1,0 +1,29 @@
+#295FindMedianfromDataStream(2024092401)
+class MedianFinder(object):
+
+    def __init__(self):
+        self.nums = []
+
+    def addNum(self, num):
+        """
+        :type num: int
+        :rtype: None
+        """
+        self.nums.append(num)
+
+    def findMedian(self):
+        """
+        :rtype: float
+        """
+        self.nums.sort()
+        lenNums = len(self.nums)
+        halfLenNums = lenNums // 2
+        if lenNums % 2 == 1:
+            return self.nums[halfLenNums]
+        return (self.nums[halfLenNums] + self.nums[halfLenNums - 1]) / 2.0
+
+
+# Your MedianFinder object will be instantiated and called as such:
+# obj = MedianFinder()
+# obj.addNum(num)
+# param_2 = obj.findMedian()
