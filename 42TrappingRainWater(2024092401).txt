@@ -1,0 +1,33 @@
+#42TrappingRainWater(2024092401)
+class Solution(object):
+    def trap(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        if not height:
+            return 0
+        lenHeight  = len(height)
+        left, right = 0, lenHeight - 1
+        heightLeft = height[0]  
+        heightRight = height[lenHeight - 1]
+        minHeight = min(heightLeft, heightRight)        
+        result = 0
+        while left < right:
+            if heightLeft <= heightRight:
+                left += 1
+                heightLeftNext = height[left]
+                if heightLeftNext > heightLeft:
+                    heightLeft = heightLeftNext
+                    minHeight = min(heightLeft, heightRight)
+                else:
+                    result += (minHeight - heightLeftNext)
+            else:
+                right -= 1
+                heightRightNext = height[right]
+                result += max(0, minHeight - heightRightNext)
+                heightRight = max(heightRight, heightRightNext)
+                minHeight = min(heightLeft, heightRight)
+        return result
+            
+        
