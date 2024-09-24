@@ -1,0 +1,14 @@
+42TrappingRainWater(2024092401)results
+
+on leetcode:
+Runtime
+199
+ms
+Beats
+8.23%
+Analyze Complexity
+Memory
+13.23
+MB
+Beats
+64.45%
