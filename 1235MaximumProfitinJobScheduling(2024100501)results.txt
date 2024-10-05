@@ -1,0 +1,13 @@
+1235MaximumProfitinJobScheduling(2024100501)results
+on leetcode:
+Runtime
+656
+ms
+Beats
+91.30%
+Analyze Complexity
+Memory
+26.01
+MB
+Beats
+65.70%

@@ -1,0 +1,44 @@
+#127WordLadder(2024092401)
+from collections import deque 
+class Solution(object):
+    def ladderLength(self, beginWord, endWord, wordList):
+        """
+        :type beginWord: str
+        :type endWord: str
+        :type wordList: List[str]
+        :rtype: int
+        """
+        len_word = len(beginWord)
+        
+        graph = {word :set() for word in wordList }
+        graph[beginWord] = set()
+        if endWord not in graph:
+            return 0
+        queue = deque([endWord])
+         
+        dp = {word : float('inf') for word in wordList} 
+        dp[endWord] = 0
+        for word in wordList:
+            for i in range(len_word):
+                for c in 'abcdefghijklmnopqrstuvwxyz':
+                    next = word[:i] + c + word[i+1:]
+                    if next in graph:
+                        graph[next].add(word)
+                        #graph[word].add(next)
+            
+        if len(graph[beginWord]) == 0:
+            return 0
+        while queue:
+            word = queue.popleft()
+            dpWord = dp[word]
+            if word in graph[beginWord]:
+                return dpWord + 2
+            for neighbor in graph[word]:
+                if dp[neighbor] > dpWord : 
+                    dp[neighbor] = dpWord + 1
+                    queue.append(neighbor)
+        result = min(dp[word] for word in graph[beginWord]) + 2
+        if result == float('inf'):
+            return 0
+        return result 
+        
