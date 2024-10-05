@@ -1,0 +1,24 @@
+#1235MaximumProfitinJobScheduling(2024100501)
+import bisect
+class Solution(object):
+    def jobScheduling(self, startTime, endTime, profit):
+        """
+        :type startTime: List[int]
+        :type endTime: List[int]
+        :type profit: List[int]
+        :rtype: int
+        """
+        jobs = sorted(zip(startTime,endTime,profit),key=lambda x:x[1])
+
+        
+        dp = [(0,0)]
+        i = 0
+        
+        for jobStart,jobEnd,jobProfit in jobs:
+            
+            i = bisect.bisect_right(dp, (jobStart,float('inf'))) - 1
+            current = dp[i][1] + jobProfit
+            if current > dp[-1][1]:
+                dp.append((jobEnd,current))
+            
+        return dp[-1][1]

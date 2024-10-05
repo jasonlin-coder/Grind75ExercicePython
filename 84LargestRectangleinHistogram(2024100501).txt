@@ -1,0 +1,28 @@
+#84LargestRectangleinHistogram(2024100501)
+
+class Solution(object):
+    def largestRectangleArea(self, heights):
+        """
+        :type heights: List[int]
+        :rtype: int
+        """
+        result = 0
+        stack = []
+        len_heights = len(heights)
+        for i in range(len_heights):
+            while stack and heights[i] < heights[stack[-1]]:
+                
+                h = heights[stack.pop()]
+                if stack:
+                    w = i - stack[-1] - 1
+                else:
+                    w = i
+                result = max(result, h*w)
+            stack.append(i)
+        while stack:
+            
+            h = heights[stack.pop()]
+            w = len_heights if not stack else len_heights - 1 - stack[-1] 
+            result = max(result, h*w)
+        
+        return result 

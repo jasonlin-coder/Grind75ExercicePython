@@ -1,0 +1,13 @@
+23MergekSortedLists(2024100501)results
+on leetcode:
+Runtime
+66
+ms
+Beats
+86.13%
+Analyze Complexity
+Memory
+21.38
+MB
+Beats
+7.60%
